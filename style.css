@@ -29,15 +29,6 @@ body, html{
     
 }
 
-#carrinho button{
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
-    cursor: pointer;
-    position: relative;
-    
-    
-}
-
 .abrir-carrinho{
     right: 0px;
     box-shadow: -20px -5px 20px 0px rgba(0, 0, 0, 0.445);
@@ -67,7 +58,11 @@ body, html{
     
 }
 
-
+#produto-carrinho{
+    overflow-y: auto;
+    margin-bottom: 10px;
+    height: 85vh;
+}
 
 article{
     display: flex;
@@ -76,6 +71,7 @@ article{
     background-color: rgb(230, 230, 230);
     border-radius: 10px;
     margin-top: 2px;
+    width: 323px;
     
 }   
 
@@ -85,8 +81,7 @@ article button{
     cursor: pointer;
     position: relative;
     font-size: 1em;
-    right: -307px;
-    bottom: 7px;
+
     height: 17px;
     color: rgb(95, 95, 95);
     
@@ -94,6 +89,11 @@ article button{
 
 article button:hover{
     color: black;
+}
+
+article .excluir-item{
+    right: -291px;
+    bottom: 7px;
 }
 
 article img{
@@ -107,6 +107,8 @@ article img{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 207px;
+    height: 89px;
     
 }
 
@@ -130,6 +132,13 @@ article img{
     border: none;
     padding: 5px;
     cursor: pointer;
+}
+
+.quantidade{
+
+    
+    position: relative;
+    top: 30px;
 }
 
 header{
@@ -255,4 +264,3 @@ main section{
 #card-produto-2 img{
     margin-top: 40px;
 }
-
