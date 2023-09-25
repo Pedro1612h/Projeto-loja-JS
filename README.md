@@ -1,2 +1,1 @@
-# Projeto-loja-JS
- Uma loja em JavaScript
+<a href="https://pedro1612h.github.io/Projeto-loja-JS/">loja</a>
