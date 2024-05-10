@@ -1,6 +1,6 @@
-import { catalogo } from "./utilidades.js";
+import { catalogo, lerLocalStorage, salvarLocalStorage } from "./utilidades.js";
 
-const idsProdutoCarrinhoComQuantidade ={}
+const idsProdutoCarrinhoComQuantidade = lerLocalStorage("carrinho") ?? {}
 
 function abrirCarrinho() {
   document.getElementById("carrinho").classList.add("abrir-carrinho");
@@ -24,12 +24,14 @@ export function inicializarCarrinho() {
 
 function removerDoCarrinho(idProduto){
   delete idsProdutoCarrinhoComQuantidade[idProduto];
+  salvarLocalStorage("carrinho", idsProdutoCarrinhoComQuantidade);
   atualizarPrecoCarrinho();
   renderizarProdutoCarrinho();
 }
 
 function incrementarQuantidadeProduto(idProduto){
   idsProdutoCarrinhoComQuantidade[idProduto]++;
+  salvarLocalStorage("carrinho", idsProdutoCarrinhoComQuantidade);
   atualizarPrecoCarrinho();
   atualizarInformacaoQuantidade(idProduto);
 }
@@ -41,6 +43,7 @@ function decrementarQuantidadeProduto(idProduto){
   }
 
   idsProdutoCarrinhoComQuantidade[idProduto]--;
+  salvarLocalStorage("carrinho", idsProdutoCarrinhoComQuantidade);
   atualizarPrecoCarrinho();
   atualizarInformacaoQuantidade(idProduto);
 }
@@ -87,7 +90,7 @@ function desenharProdutiNoCarrinho(idProduto){
   document.getElementById(`remover-item-${produto.id}`).addEventListener('click', () => removerDoCarrinho(produto.id));
 }
 
-function renderizarProdutoCarrinho(){
+export function renderizarProdutoCarrinho(){
   const containerProdutosCarrinho = document.getElementById("produto-carrinho");
   containerProdutosCarrinho.innerHTML = "";
   
@@ -102,11 +105,12 @@ export function adicionarAoCarrinho(idProduto) {
     return;
   }
   idsProdutoCarrinhoComQuantidade[idProduto] = 1;
+  salvarLocalStorage("carrinho", idsProdutoCarrinhoComQuantidade);
   desenharProdutiNoCarrinho(idProduto);
   atualizarPrecoCarrinho();  
 }
 
-function atualizarPrecoCarrinho(){
+export function atualizarPrecoCarrinho(){
   const precoCarrinho = document.getElementById("preco-total");
   let precoTotalCarrinho = 0;
   for(const idProdutoNoCarrinho in idsProdutoCarrinhoComQuantidade){

@@ -3,7 +3,7 @@ import { adicionarAoCarrinho } from "./menuCarrinho.js";
 
 export function renderizarCatalogo() {
   for (const produtoCatalogo of catalogo) {
-    const cartaoProduto = `<div class="aria-item" id="card-produto-${produtoCatalogo.id}">
+    const cartaoProduto = `<div class="aria-item ${produtoCatalogo.jogos ? 'jogos' : 'console'}" id="card-produto-${produtoCatalogo.id}">
         <div class="foto">
           <img
           src="./img/${produtoCatalogo.nomeArquivoImagem}"
